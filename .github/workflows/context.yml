@@ -1,7 +1,7 @@
-name: Context
-on: push
+name: OS command injection test
+on: pull_request
 jobs:
-  run:
+  print:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ github.actor }}"
+      - run: echo "${{ github.event.pull_request.title }}"
