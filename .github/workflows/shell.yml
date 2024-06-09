@@ -1,13 +1,12 @@
-name: Change shell
+name: koko-ga-github-workflow-nandesu
 on:
   push:
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   print:
     runs-on: ubuntu-latest
     steps:
       - shell: bash
-        run: echo "${BASH}"
-      - shell: python
-        run: |
-          import os
-          print(os.environ['PATH'])
+        env:
+          REF: ${{ github.ref }}
+        run: echo "${REF}"
