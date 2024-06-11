@@ -3,5 +3,7 @@ description: |
   環境変数とgithubコンテキストをログへ出力します。
   ワークフローのデバッグに便利です。
 runs:
-  using: docker
-  image: Dockerfile
+  using: composite
+  steps:
+    - run: ./script.sh
+      shell: bash
