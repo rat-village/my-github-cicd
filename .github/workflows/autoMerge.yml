@@ -6,4 +6,4 @@ jobs:
     steps:
       - run: echo 123
         if: >-
-          123 == 456
+          123 == 123
