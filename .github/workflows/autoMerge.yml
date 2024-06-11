@@ -5,5 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo 123
-        if:
+        if: >-
           123 == 456
