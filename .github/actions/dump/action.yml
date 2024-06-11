@@ -5,5 +5,5 @@ description: |
 runs:
   using: composite
   steps:
-    - run: ./script.sh
+    - run: "${GITHUB_ACTION_PATH}/script.sh"
       shell: bash
