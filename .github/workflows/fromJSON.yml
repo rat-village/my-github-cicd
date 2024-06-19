@@ -1,0 +1,19 @@
+name: fromJSON
+on: push
+jobs:
+  prep:
+    runs-on: ubuntu-latest
+    steps:
+      - id: generate
+        run: |
+          matrix='{"runner": ["ubuntu-latest", "macos-latest"]}'
+          echo "matrix=${matrix}" >> "${GITHUB_OUTPUT}"
+    outputs:
+      matrix: ${{ steps.generate.outputs.matrix }}
+  fire:
+    needs: [prep]
+    strategy:
+      matrix: ${{ fromJSON(needs.prep.outputs.matrix) }}
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - run: echo "${RUNNER_OS}"
