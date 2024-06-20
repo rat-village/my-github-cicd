@@ -16,7 +16,9 @@ exp="$((now + (3 * 60)))"
 template='{"iss":"%s","iat":%s,"exp":%s}'
 payload="$(printf "${template}" "${APP_ID}" "${iat}" "${exp}" | base64url)"
 signature="$(printf '%s' "${header}.${payload}" | sign | base64url)"
+echo "::add-mask::${signature}"
 jwt="${header}.${payload}.${signature}"
+echo "::add-mask::${jwt}"
 
 # Installation APIの実行
 repo="wonda-tea-coffee/${TARGET_REPO}"
@@ -37,4 +39,5 @@ token="$(curl --location --silent --request POST \
   --data "$(printf '{"repositories":["%s"]}' "${TARGET_REPO}")" \
   | jq -r '.token'
 )"
+echo "::add-mask::${token}"
 echo "token=${token}" >>"${GITHUB_OUTPUT}"
