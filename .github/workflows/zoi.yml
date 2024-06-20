@@ -11,6 +11,7 @@ jobs:
         with:
           app-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
+          owner: wonda-tea-coffee
           repositories: ${{ env.TARGET_REPO }}
       - uses: actions/checkout@v4
         with:
