@@ -19,7 +19,7 @@ signature="$(printf '%s' "${header}.${payload}" | sign | base64url)"
 jwt="${header}.${payload}.${signature}"
 
 # Installation APIの実行
-repo="${GITHUB_REPOSITORY_OWNER}/${TARGET_REPO}"
+repo="wonda-tea-coffee/${TARGET_REPO}"
 installation_id="$(curl --location --silent --request GET \
   --url "${GITHUB_API_URL}/repos/${repo}/installation" \
   --header "Accept: application/vnd.github+json" \
